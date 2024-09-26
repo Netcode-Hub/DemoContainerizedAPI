@@ -1,0 +1,14 @@
+﻿services:
+  productapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myproductapi:v1
+    container_name: productapi
+    ports:
+      - "6050:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__AppDbContext=Data Source=/app/Data/mydatabase.db
+    volumes:
+      - ./data:/app/Data
